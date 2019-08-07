@@ -31,9 +31,6 @@
   - name: Install tmux
     apt: name=tmux
 
-  - name: Install qemu-img 
-    apt: name=qemu-img
-
   - name: Install libvirt
     apt: name=libvirt
 
