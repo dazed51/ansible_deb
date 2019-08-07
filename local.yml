@@ -1,0 +1,44 @@
+- hosts: localhost
+  become: true
+  tasks:
+  - name: Install htop
+    apt: name=htop
+
+  - name: Install vim
+    apt: name=vim
+
+  - name: Install wireshark
+    apt: name=wireshark
+
+  - name: Install deluge
+    apt: name=deluge
+
+  - name: Install wireguard
+    apt: name=wireguard
+
+  - name: Install vlc
+    apt: name=vlc
+
+  - name: Install nmap
+    apt: name=nmap
+
+  - name: Install irssi
+    apt:  name=irssi
+
+  - name: Install ssldump
+    apt: name=ssldump
+  
+  - name: Install tmux
+    apt: name=tmux
+
+  - name: Install qemu-img 
+    apt: name=qemu-img
+
+  - name: Install libvirt
+    apt: name=libvirt
+
+  - name: Install virt-manager
+    apt: name=virt-manager
+
+  - name: Install mutt
+    apt: name=mutt
