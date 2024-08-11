@@ -13,12 +13,6 @@
   - name: Install deluge
     apt: name=deluge
 
-  - name: Install wireguard
-    apt: name=wireguard
-
-  - name: Install vlc
-    apt: name=vlc
-
   - name: Install nmap
     apt: name=nmap
 
@@ -39,3 +33,43 @@
 
   - name: Install mutt
     apt: name=mutt
+
+  - name: Install Flatpak
+    apt: name=flatpak
+
+  - name: Install Flatpak-Apps
+    community.general.flatpak:
+      name:
+        - org.signal.Signal
+        - com.slack.Slack
+        - org.eclipse.Java
+        - io.freetubeapp.FreeTube
+        - io.github.mimbrero.WhatsAppDesktop
+  
+  ###docker install###
+
+  - name: Docker dep
+    apt:
+      state: present
+      install_recommends: false
+      pkg:
+        - bridge-utils
+        - ca-certificates
+        - curl
+        - gnupg
+      update_cache: true
+
+
+  - name: get architecture
+    shell: dpkg --print-architecture
+    register: deb_architecture
+
+  - name: get gpg key
+    get_url:
+      url: https://download.docker.com/linux/debian/gpg
+      dest: /etc/apt/keyrings/docker.asc
+      mode: 0644
+      force: true
+    tags: install_docker
+
+
