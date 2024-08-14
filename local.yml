@@ -77,25 +77,25 @@
       force: true
     tags: install_docker
 
- - name: add docker apt repository
-   apt_repository:
-      repo: "deb [arch={{ deb_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable"
-      state: present
-      update_cache: yes
-      filename: docker
-   tags: install_docker
+  - name: add docker apt repository
+    apt_repository:
+       repo: "deb [arch={{ deb_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable"
+       state: present
+       update_cache: yes
+       filename: docker
+    tags: install_docker
 
- - name: install docker and related components
-     apt:
-       name:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
-          - docker-buildx-plugin
-          - docker-compose-plugin
-       state: latest
-       update_cache: true
-     tags: install_docker
+  - name: install docker and related components
+      apt:
+        name:
+           - docker-ce
+           - docker-ce-cli
+           - containerd.io
+           - docker-buildx-plugin
+           - docker-compose-plugin
+        state: latest
+        update_cache: true
+      tags: install_docker
     
   - name: restart Docker 
     systemd:
