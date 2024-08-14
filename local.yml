@@ -25,15 +25,6 @@
   - name: Install tmux
     apt: name=tmux
 
-  - name: Install libvirt
-    apt: name=libvirt
-
-  - name: Install virt-manager
-    apt: name=virt-manager
-
-  - name: Install mutt
-    apt: name=mutt
-
   - name: Install Flatpak
     apt: name=flatpak
 
@@ -45,7 +36,21 @@
         - org.eclipse.Java
         - io.freetubeapp.FreeTube
         - io.github.mimbrero.WhatsAppDesktop
+        - md.obsidian.Obsidian   
   
+  - name: virtual machine package-pattern
+    apt:
+      state: present
+      install_recommends: false
+      pkg:
+        - virt-manager
+        - ruby
+        - ruby-dev
+        - vagrant
+        - libvirt-clients
+        - libvirt-daemon-system
+      update_cache: true
+
   ###docker install###
 
   - name: Docker dep
@@ -72,4 +77,30 @@
       force: true
     tags: install_docker
 
+ - name: add docker apt repository.
+   apt_repository:
+      repo: "deb [arch={{ deb_architecture.stdout }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable"
+      state: present
+      update_cache: yes
+      filename: docker
+   tags: install_docker
 
+ - name: install docker and related components
+     apt:
+       name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+       state: latest
+       update_cache: true
+     tags: install_docker
+    
+  - name: restart Docker 
+    systemd:
+      name: docker
+      state: restarted 
+      masked: no
+    tags: install_docker
+        
