@@ -120,7 +120,7 @@
     service:  
       name: {{ item }}
       state: restarted
-        enabled: yes
+      enabled: yes
     with_item:
       - docker
       - libvirt
