@@ -122,7 +122,11 @@
       state: restarted
       enabled: yes
 <<<<<<< HEAD
+<<<<<<< HEAD
     with_item:
+=======
+    loop:
+>>>>>>> deb_ansible_dev
 =======
     loop:
 >>>>>>> deb_ansible_dev
