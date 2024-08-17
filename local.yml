@@ -117,13 +117,13 @@
       append: yes
 
   - name: restart servicies
-     service:  
-       name: {{ item }}
-       state: restarted
-       enabled: yes
-     with_item:
-       - docker
-       - libvirt
+    service:  
+      name: {{ item }}
+      state: restarted
+        enabled: yes
+    with_item:
+      - docker
+      - libvirt
     
 
         
