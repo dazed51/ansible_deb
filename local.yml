@@ -118,12 +118,21 @@
 
   - name: restart servicies
     service:  
+<<<<<<< HEAD
        name: {{ item }}
        state: restarted
        enabled: yes
      with_item:
        - docker
        - libvirt
+=======
+      name: {{ item }}
+      state: restarted
+        enabled: yes
+    with_item:
+      - docker
+      - libvirt
+>>>>>>> deb_ansible_dev
     
 
         
