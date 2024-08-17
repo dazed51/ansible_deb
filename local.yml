@@ -117,7 +117,7 @@
       append: yes
 
   - name: restart servicies
-     service:  
+    service:  
        name: {{ item }}
        state: restarted
        enabled: yes
