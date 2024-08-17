@@ -103,4 +103,27 @@
       state: restarted 
       masked: no
     tags: install_docker
+
+  - name: adduser to docker
+    user:
+      name: xtify
+      groups: docker
+      append: yes
+
+  - name: adduser to libvirtd
+    user:
+      name: xtify
+      groups: libvirt
+      append: yes
+
+  - name: restart servicies
+     service:  
+       name: {{ item }}
+       state: restarted
+       enabled: yes
+     with_item:
+       - docker
+       - libvirt
+    
+
         
