@@ -118,10 +118,10 @@
 
   - name: restart servicies
     service:  
-      name: {{ item }}
+      name: "{{ item }}"
       state: restarted
       enabled: yes
-    with_item:
+    loop:
       - docker
       - libvirt
     
