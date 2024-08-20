@@ -135,11 +135,11 @@
  
   - name: brave repo
     become: true
-      ansible.builtin.copy:
-        dest: /etc/apt/sources.list.d/brave-browser-release.list
-        content: |
-        deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
-        mode: "0644"
+    ansible.builtin.copy:
+      dest: /etc/apt/sources.list.d/brave-browser-release.list
+      content: |
+      deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
+      mode: "0644"
 
   - name: install brave
     apt:
