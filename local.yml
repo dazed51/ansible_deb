@@ -126,20 +126,20 @@
       - libvirt
     
 
- - name: get brave gpg key
-   get_url:
-     url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg 
-     dest: /etc/apt/brave-browser-archive-keyring.gpg
-     mode: 0644
-     force: true
+  - name: get brave gpg key
+    get_url:
+      url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg 
+      dest: /etc/apt/brave-browser-archive-keyring.gpg
+      mode: 0644
+      force: true
  
- - name: brave repo
-   become: true
-   ansible.builtin.copy:
-     dest: /etc/apt/sources.list.d/brave-browser-release.list
-     content: |
-       deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
-     mode: "0644"
+  - name: brave repo
+    become: true
+      ansible.builtin.copy:
+        dest: /etc/apt/sources.list.d/brave-browser-release.list
+        content: |
+        deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
+        mode: "0644"
 
   - name: install brave
     apt:
